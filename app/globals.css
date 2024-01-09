@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply bg-white text-[16px]
+}
+
+.wrapper {
+    @apply max-w-[1200px] mx-auto px-2
+}
+
+.btn {
+    @apply py-2 px-5 bg-orange-c text-white rounded
+}
