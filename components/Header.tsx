@@ -30,7 +30,7 @@ export default function Header() {
                             <ul className="flex items-center gap-7 font-medium text-[16px]">
                                 <li><Link href="/">Home</Link></li>
                                 <li><Link href="/about">Tentang Kami</Link></li>
-                                <li><Link href="/">Program</Link></li>
+                                <li><Link href="/program">Program</Link></li>
                                 <li><Link href="/">Kolaborasi</Link></li>
                             </ul>
                             <Link href="/" className="btn">Donasi</Link>
