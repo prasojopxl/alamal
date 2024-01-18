@@ -28,7 +28,7 @@ export default function Header() {
                         <div className="relative flex items-center gap-7">
                             <ul className="flex items-center gap-7 font-medium text-[16px]">
                                 <li><Link href="/">Home</Link></li>
-                                <li><Link href="/">Tentang Kami</Link></li>
+                                <li><Link href="/about">Tentang Kami</Link></li>
                                 <li><Link href="/">Program</Link></li>
                                 <li><Link href="/">Kolaborasi</Link></li>
                             </ul>
