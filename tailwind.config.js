@@ -34,7 +34,8 @@ module.exports = {
                 "pink-c":"#F2EDF6",
                 "blue-c":"#D8F0FE",
                 "gray-c":"#F5F2EC",
-                "orange-c":"#F15B43",
+                "orange-c":"#6A8B07",
+                "main-c":"#6A8B07",
                 "black":"#0e1133",
                 "gray":"#F2F3F6"
             }

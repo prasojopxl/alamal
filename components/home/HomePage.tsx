@@ -10,7 +10,6 @@ export default function HomePage() {
     return (
         <div className="relative">
             <MainBanner />
-            <Quote />
             <MainInfo />
             <ListDonate />
             <Testimoni />

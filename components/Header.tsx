@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Header() {
     return (
@@ -23,7 +24,7 @@ export default function Header() {
                 <div className="wrapper">
                     <div className="flex items-center justify-between py-4">
                         <div className="flex justify-between font-black text-3xl">
-                            <Link href="/" className="text-orange-c">Al<span className="text-black">amal</span></Link>
+                            <Link href="/" className="text-orange-c"><Image src="/images/logo.jpeg" width={70} height={70} alt="logo" /></Link>
                         </div>
                         <div className="relative flex items-center gap-7">
                             <ul className="flex items-center gap-7 font-medium text-[16px]">

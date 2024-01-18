@@ -5,9 +5,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs";
 import Image from "next/image";
 
-function ItemSlide() {
+function ItemSlide(props: any) {
     return (
-        <div><Image src="/images/banner-img-1.jpg" width={1919} height={900} alt="image" /></div>
+        <div><Image src={props.image} width={1919} height={900} alt="image" /></div>
     )
 }
 
@@ -53,10 +53,8 @@ export default function MainBanner() {
     return (
         <div className="relative">
             <Slider {...settings}>
-                <ItemSlide />
-                <ItemSlide />
-                <ItemSlide />
-                <ItemSlide />
+                <ItemSlide image="/images/img1.jpeg" />
+                <ItemSlide image="/images/img2.jpeg" />
             </Slider>
         </div>
     )
