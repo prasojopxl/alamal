@@ -6,6 +6,7 @@ import ErrorNetwork from "@/components/errorNetwork"
 import parse from "html-react-parser";
 import Image from "next/image"
 import { urlMedia } from "../utils/vars"
+import Link from "next/link"
 
 function CampaignContent() {
     const getQuery = async () => {
@@ -38,18 +39,31 @@ function CampaignContent() {
     const dataContent = query.data?.data.data
     const dataImage = query.data?.data.data.attributes?.main_image
     console.log(dataContent)
+
+    function Item(props: any) {
+        return (
+            <Link href={props.link ? props.link : "/blog/slug"} className="lg:w-4/12 w-full p-3">
+                <div className="rounded-[10px] overflow-hidden border-[#DEE3EB] border-solid border-[1px]">
+                    <div className="relative w-[369px] h-[229px] overflow-hidden mx-auto">
+                        <Image src={`${props.image}`} alt="" fill />
+                    </div>
+                    <div className="p-5">
+                        <h5 className="uppercase text-c-green font-medium text-[16px]">{props.category}</h5>
+                        <h4 className="font-bold text-[24px] line-clamp-2 clamp-hack h-[70px]">{props.title}</h4>
+                        <div className="mt-0 line-clamp-3 clamp-hack [&_p]:mt-2 overflow-hidden max-h-[75px]">{props.description}</div>
+                    </div>
+                </div>
+            </Link>
+        )
+    }
+
     return (
         <div>
             <div className="flex flex-wrap -mx-3">
                 {
                     dataContent?.map((item: any) => {
                         return (
-                            <div className="w-6/12 p-3" key={item.id}>
-                                <div className="shadow-lg w-full min-h-[300px] p-5 rounded-lg">
-                                    <h2 className="text-3xl font-bold mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h2>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. A id, quas necessitatibus ipsa eaque quidem? Quas, harum in fugit veniam minus dolores, sunt rerum velit sapiente neque id, eius ducimus!
-                                </div>
-                            </div>
+                            <Item link="/blog/slug" image="/images/donate-image.jpg" category="Donation" title="Sumur Hijau" description="Sumur Hijau" />
 
                         )
                     })
