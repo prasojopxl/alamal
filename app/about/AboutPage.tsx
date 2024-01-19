@@ -47,7 +47,7 @@ function AboutContent() {
             <div className="[&_h3]:bg-pink-c [&_h3]:p-3 [&_h3]:rounded [&_h3]:mt-[30px] [&_h3]:block
             [&_ol]:ml-4 [&_p]:first-letter:*:first-line:marker:text-main-c [&_p]:first-letter:text-main-c [&_p]:first-letter:font-bold [&_p]:first-letter:text-7xl [&_p]:first-letter:mr-2 &[_p]:first-letter:float-left 
             ">
-                {parse(dataContent)}
+                {parse(`${dataContent}`)}
             </div>
         </div>
     )

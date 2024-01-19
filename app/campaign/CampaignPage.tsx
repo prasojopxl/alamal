@@ -13,7 +13,7 @@ function CampaignContent() {
         return await getData("/campaigns?populate=*")
     }
     const query = useQuery({
-        queryKey: ["about"],
+        queryKey: ["campaign"],
         queryFn: getQuery
     })
 
@@ -34,12 +34,10 @@ function CampaignContent() {
             <ErrorNetwork />
         )
     }
-    console.log(query.data)
 
-    const dataContent = query.data?.data.data
+    const dataContent = query.data?.data
     const dataImage = query.data?.data.data.attributes?.main_image
     console.log(dataContent)
-
     function Item(props: any) {
         return (
             <Link href={props.link ? props.link : "/blog/slug"} className="lg:w-4/12 w-full p-3">
@@ -61,12 +59,12 @@ function CampaignContent() {
         <div>
             <div className="flex flex-wrap -mx-3">
                 {
-                    dataContent?.map((item: any) => {
+                    query.isSuccess ? dataContent?.data?.map((item: any) => {
                         return (
-                            <Item link="/blog/slug" image="/images/donate-image.jpg" category="Donation" title="Sumur Hijau" description="Sumur Hijau" />
+                            <Item key={item.id} link="/blog/slug" image="/images/donate-image.jpg" category="Donation" title="Sumur Hijau" description="Sumur Hijau" />
 
                         )
-                    })
+                    }) : null
                 }
             </div>
         </div>

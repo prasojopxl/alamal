@@ -12,7 +12,7 @@ function ProgramContent() {
         return await getDataOpen("/posts/2?populate=*")
     }
     const query = useQuery({
-        queryKey: ["about"],
+        queryKey: ["program"],
         queryFn: getQuery
     })
 
@@ -45,7 +45,7 @@ function ProgramContent() {
                 </div> : null
             }
             <div className="max-w-[1000px] mx-auto [&_ol]:list-decimal">
-                {parse(dataContent)}
+                {parse(`${dataContent}`)}
             </div>
         </div>
     )
