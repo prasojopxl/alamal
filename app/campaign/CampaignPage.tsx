@@ -1,15 +1,15 @@
 "use client"
 import { useQuery } from "@tanstack/react-query"
-import { getDataOpen } from "../utils/services"
+import { getData, getDataOpen } from "../utils/services"
 import Basecontent from "@/components/basecontent"
 import ErrorNetwork from "@/components/errorNetwork"
 import parse from "html-react-parser";
 import Image from "next/image"
 import { urlMedia } from "../utils/vars"
 
-function AboutContent() {
+function CampaignContent() {
     const getQuery = async () => {
-        return await getDataOpen("/posts/1?populate=*")
+        return await getData("/campaigns?populate=*")
     }
     const query = useQuery({
         queryKey: ["about"],
@@ -33,31 +33,37 @@ function AboutContent() {
             <ErrorNetwork />
         )
     }
+    console.log(query.data)
 
-    const dataContent = query.data?.data.data.attributes?.content
+    const dataContent = query.data?.data.data
     const dataImage = query.data?.data.data.attributes?.main_image
-
+    console.log(dataContent)
     return (
-        <div className="max-w-[1000px] mx-auto">
-            {
-                dataImage?.data ? <div className="relative w-full">
-                    <Image src={urlMedia + dataImage?.data.attributes?.url} width={dataImage?.data.attributes?.width} height={dataImage?.data.attributes?.height} alt="image" />
-                </div> : null
-            }
-            <div className="[&_h3]:bg-pink-c [&_h3]:p-3 [&_h3]:rounded [&_h3]:mt-[30px] [&_h3]:block
-            [&_ol]:ml-4 [&_p]:first-letter:*:first-line:marker:text-main-c [&_p]:first-letter:text-main-c [&_p]:first-letter:font-bold [&_p]:first-letter:text-7xl [&_p]:first-letter:mr-2 &[_p]:first-letter:float-left 
-            ">
-                {parse(dataContent)}
+        <div>
+            <div className="flex flex-wrap -mx-3">
+                {
+                    dataContent?.map((item: any) => {
+                        return (
+                            <div className="w-6/12 p-3" key={item.id}>
+                                <div className="shadow-lg w-full min-h-[300px] p-5 rounded-lg">
+                                    <h2 className="text-3xl font-bold mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. </h2>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. A id, quas necessitatibus ipsa eaque quidem? Quas, harum in fugit veniam minus dolores, sunt rerum velit sapiente neque id, eius ducimus!
+                                </div>
+                            </div>
+
+                        )
+                    })
+                }
             </div>
         </div>
     )
 }
-export default function AboutPage() {
+export default function CampaignPage() {
 
     return (
         <div>
             <Basecontent>
-                <AboutContent />
+                <CampaignContent />
             </Basecontent>
         </div>
     )

@@ -4,10 +4,12 @@ import { getDataOpen } from "../utils/services"
 import Basecontent from "@/components/basecontent"
 import ErrorNetwork from "@/components/errorNetwork"
 import parse from "html-react-parser";
+import Image from "next/image"
+import { urlMedia } from "../utils/vars"
 
 function ProgramContent() {
     const getQuery = async () => {
-        return await getDataOpen("/posts/2")
+        return await getDataOpen("/posts/2?populate=*")
     }
     const query = useQuery({
         queryKey: ["about"],
@@ -33,9 +35,19 @@ function ProgramContent() {
     }
 
 
-    const dataContent = query.data?.data.data.attributes.content
+    const dataContent = query.data?.data.data.attributes?.content
+    const dataImage = query.data?.data.data.attributes?.main_image
     return (
-        <div>{parse(dataContent)}</div>
+        <div>
+            {
+                dataImage?.data ? <div className="relative w-full">
+                    <Image src={urlMedia + dataImage?.data?.attributes?.url} width={dataImage?.data?.attributes?.width} height={dataImage?.data?.attributes?.height} alt="image" />
+                </div> : null
+            }
+            <div className="max-w-[1000px] mx-auto [&_ol]:list-decimal">
+                {parse(dataContent)}
+            </div>
+        </div>
     )
 }
 export default function ProgramPage() {

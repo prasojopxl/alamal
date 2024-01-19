@@ -1,5 +1,5 @@
 import axios from "axios"
-import { keyApi, urlApi } from "./vars";
+import { keyApi, keyApi2, urlApi } from "./vars";
 
 export const axiosInstance = axios.create({
     baseURL: urlApi,
@@ -10,9 +10,21 @@ const config = {
         'Authorization': 'Bearer ' + keyApi
     }
 }
+const config2 = {
+    headers: {
+        'Authorization': 'Bearer ' + keyApi2
+    }
+}
 
 
 export const getData = (url: string) => axios.get(`${urlApi + url}`, config)
+    .then((res) => {
+        return res
+    }).catch((error) => {
+        console.log(error)
+    })
+
+export const getData2 = (url: string) => axios.get(`${urlApi + url}`, config2)
     .then((res) => {
         return res
     }).catch((error) => {
