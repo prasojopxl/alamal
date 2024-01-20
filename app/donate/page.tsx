@@ -78,7 +78,8 @@ function Donate() {
     return (
         <div className="wrapper">
             <div className="max-w-[800px] mx-auto my-7 shadow-lg p-7 rounded">
-                <h1 className="text-center mb-7">Donasi Pembangunan Masjid</h1>
+                <h1 className="text-center mb-7">Donasi</h1>
+                <h5>Silahkan isi form dibawah ini untuk melakukan donasi</h5>
                 <h4 className="mt-3">Nama</h4>
                 <input onChange={(e) => setDataDonator({ ...dataDonator, nama: e.target.value })} type="text" className="border px-3 py-1 w-full" />
                 <h4 className="mt-3">Email</h4>
@@ -96,7 +97,11 @@ function Donate() {
                         })
                     }
                 </select>
-                <button className="bg-orange-c text-white w-full mt-5 py-2 rounded" onClick={donatenow}>Donasi</button>
+                {
+                    dataDonator.nama?.length > 2 && dataDonator.email?.length > 5 && parseInt(dataDonator.nominal) >= 1000 ?
+                        <button className="bg-orange-c text-white w-full mt-5 py-2 rounded" onClick={donatenow}>Donasi</button> : <button className="bg-orange-c text-white w-full mt-5 py-2 rounded opacity-35 cursor-default">Donasi</button>
+                }
+
             </div>
         </div>
     )
