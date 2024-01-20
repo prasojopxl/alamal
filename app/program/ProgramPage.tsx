@@ -1,9 +1,9 @@
 "use client"
 import { useQuery } from "@tanstack/react-query"
 import { getDataOpen } from "../utils/services"
-import Basecontent from "@/components/basecontent"
 import ErrorNetwork from "@/components/errorNetwork"
 import parse from "html-react-parser";
+import Basecontent from "@/components/basecontent"
 import Image from "next/image"
 import { urlMedia } from "../utils/vars"
 
