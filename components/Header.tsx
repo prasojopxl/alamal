@@ -34,7 +34,7 @@ export default function Header() {
                                 <li><Link href="/campaign">Campaign</Link></li>
                                 <li><Link href="/">Kolaborasi</Link></li>
                             </ul>
-                            <Link href="/" className="btn">Donasi</Link>
+                            <Link href="/donate" className="btn">Donasi</Link>
                         </div>
                     </div>
                 </div>

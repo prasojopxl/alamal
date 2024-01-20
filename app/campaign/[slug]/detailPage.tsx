@@ -88,7 +88,7 @@ function ContentDetail() {
                                         <div className="text-sm mb-1">Target: {(dataContent.attributes.target_total_donate).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
                                         <div className="text-sm mb-1">Total Donator: 50</div>
                                     </div>
-                                    <Link href="/" className="btn mt-5 inline-block">Donasi Sekarang</Link>
+                                    <Link href="/donate" className="btn mt-5 inline-block">Donasi Sekarang</Link>
                                 </div>
                             </div>
                         </div>

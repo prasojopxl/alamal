@@ -34,7 +34,7 @@ function Donate() {
         nama: null,
         email: null,
         nominal: null,
-        productName: null
+        productName: "Membangun Masjid"
     })
     const getQuery = async () => {
         return await getData("/campaigns?populate=*")
@@ -63,7 +63,6 @@ function Donate() {
     }
 
     const dataCampaign = query.data?.data.data
-    console.log(dataDonator)
 
     const donatenow = async () => {
         const data: iDonate = {
