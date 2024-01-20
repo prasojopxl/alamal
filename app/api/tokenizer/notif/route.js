@@ -23,15 +23,12 @@ export async function GET() {
 
 export async function POST(req) {
     const body = await req.json()
-    const updateData = await axios.post("https://adm.stagingaja.com/api/transactions", config2,{
-        method: "POST",
+    axios.post("https://adm.stagingaja.com/api/transactions", {
         data: {
             dataku: body
         }
-    }).then((res) => res.data)
+    }, config2).then((res) => res.data)
     
-    const dataku = await updateData
-
-    console.log({dataku})
+    // console.log({dataku})
     return NextResponse.json(body)
 }
