@@ -36,8 +36,6 @@ function CampaignContent() {
     }
 
     const dataContent = query.data?.data
-    const dataImage = query.data?.data.data.attributes?.main_image
-    console.log(dataContent)
     function Item(props: any) {
         return (
             <Link href={props.link ? props.link : "/blog/slug"} className="lg:w-4/12 w-full p-3">
@@ -47,8 +45,8 @@ function CampaignContent() {
                     </div>
                     <div className="p-5">
                         <h5 className="uppercase text-c-green font-medium text-[16px]">{props.category}</h5>
-                        <h4 className="font-bold text-[24px] line-clamp-2 clamp-hack h-[70px]">{props.title}</h4>
-                        <div className="mt-0 line-clamp-3 clamp-hack [&_p]:mt-2 overflow-hidden max-h-[75px]">{props.description}</div>
+                        <h4 className="font-bold text-[24px] line-clamp-2 clamp-hack max-h-[70px]">{props.title}</h4>
+                        <div className="mt-0 line-clamp-3 clamp-hack [&_p]:mt-2 overflow-hidden max-h-[85px]">{props.description}</div>
                     </div>
                 </div>
             </Link>
@@ -61,8 +59,13 @@ function CampaignContent() {
                 {
                     query.isSuccess ? dataContent?.data?.map((item: any) => {
                         return (
-                            <Item key={item.id} link="/blog/slug" image="/images/donate-image.jpg" category="Donation" title="Sumur Hijau" description="Sumur Hijau" />
-
+                            <Item key={item.id}
+                                link={`/campaign/${item.id}`}
+                                image={item.attributes.mainimage ? urlMedia + item.attributes.mainimage.data.attributes.url : "/images/donate-image.jpg"}
+                                category="Donasi"
+                                title={item.attributes.title}
+                                description={parse(item.attributes.content)}
+                            />
                         )
                     }) : null
                 }
@@ -71,7 +74,6 @@ function CampaignContent() {
     )
 }
 export default function CampaignPage() {
-
     return (
         <div>
             <Basecontent>

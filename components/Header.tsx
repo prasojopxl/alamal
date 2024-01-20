@@ -31,7 +31,7 @@ export default function Header() {
                                 <li><Link href="/">Home</Link></li>
                                 <li><Link href="/about">Tentang Kami</Link></li>
                                 <li><Link href="/program">Program</Link></li>
-                                <li><Link href="/campaign">campaign</Link></li>
+                                <li><Link href="/campaign">Campaign</Link></li>
                                 <li><Link href="/">Kolaborasi</Link></li>
                             </ul>
                             <Link href="/" className="btn">Donasi</Link>

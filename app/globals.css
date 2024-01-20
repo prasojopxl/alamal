@@ -37,3 +37,15 @@ ol {
 ol li {
     @apply my-3 list-inside
 }
+
+.sliderdetail .slick-dots li{
+    margin: 0;
+}
+
+.sliderdetail .slick-dots li button::before {
+    @apply text-[12px]
+}
+
+.sliderdetail .slick-dots li.slick-active button::before{
+    @apply text-main-c
+}
