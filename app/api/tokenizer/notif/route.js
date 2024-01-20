@@ -23,7 +23,7 @@ export async function GET() {
 
 export async function POST(req) {
     const body = await req.json()
-    const updateData = await axios.push("https://adm.stagingaja.com/api/transactions", config2,{
+    const updateData = await axios.post("https://adm.stagingaja.com/api/transactions", config2,{
         method: "POST",
         data: {
             dataku: body
