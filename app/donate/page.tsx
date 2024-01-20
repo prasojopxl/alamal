@@ -98,7 +98,7 @@ function Donate() {
                     }
                 </select>
                 {
-                    dataDonator.nama?.length > 2 && dataDonator.email?.length > 5 && parseInt(dataDonator.nominal) >= 1000 ?
+                    dataDonator.nama !== "" && dataDonator.email !== "" && dataDonator.nominal !== "" ?
                         <button className="bg-orange-c text-white w-full mt-5 py-2 rounded" onClick={donatenow}>Donasi</button> : <button className="bg-orange-c text-white w-full mt-5 py-2 rounded opacity-35 cursor-default">Donasi</button>
                 }
 
