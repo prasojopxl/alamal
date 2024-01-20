@@ -1,4 +1,3 @@
-"use client"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ReactNode } from "react"
 
@@ -9,6 +8,7 @@ interface iBase {
 }
 
 export default function Basecontent(props: iBase) {
+
     return (
         <QueryClientProvider client={queryClient}>
             <div>{props.children}</div>

@@ -10,6 +10,7 @@ import HomePage from "@/components/home/HomePage"
 import Basecontent from "@/components/basecontent"
 
 export default function Home() {
+
     return (
         <main>
             <Basecontent>
