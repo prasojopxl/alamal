@@ -18,7 +18,7 @@ function ItemInfo(props: any) {
 export default function MainInfo() {
     return (
         <div className="wrapper">
-            <div className="flex justify-between gap-7 mt-24 mb-24">
+            <div className="flex justify-between gap-7 mt-24 mb-24 lg:flex-row flex-col">
                 <ItemInfo bgcolor="bg-pink-c" title="Tata Kelola" icon={<MdDisplaySettings className="text-[200px] text-orange" />} />
                 <ItemInfo bgcolor="bg-blue-c" title="Rekening Zakat" icon={<TbMoneybag className="text-[200px] text-orange" />} />
                 <ItemInfo bgcolor="bg-gray-c" title="Mitra Kami" icon={<MdOutlineJoinFull className="text-[200px] text-orange" />} />

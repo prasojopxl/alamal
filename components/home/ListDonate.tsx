@@ -14,7 +14,7 @@ export default function ListDonate() {
                     <h2 className="text-3xl font-bold mb-3">Salurkan donasi dan amal pada program kami</h2>
                     <p>Melalui program pilihan kami, anda dapat menyalurkan donasi dan amal untuk program yang kami sediakan</p>
                 </div>
-                <div className="flex justify-between gap-7 mt-9 max-w-[1000px] mx-auto">
+                <div className="flex justify-between gap-7 mt-9 max-w-[1000px] mx-auto lg:flex-row flex-col">
                     <ItemProgram />
                     <ItemProgram />
                     <ItemProgram />

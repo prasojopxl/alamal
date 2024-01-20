@@ -69,11 +69,11 @@ function ContentDetail() {
                         {dataContent.attributes.title}
                     </h1>
                     <h5 className="opacity-50">Di Publish: {moment(`${dataContent.attributes.publishedAt}`).format('DD MMMM YYYY')}</h5>
-                    <div className="relative min-h-[500px] flex gap-9">
-                        <div className="w-8/12">
+                    <div className="relative min-h-[500px] flex gap-9 lg:flex-row flex-col">
+                        <div className="lg:w-8/12">
                             {parse(`${dataContent.attributes.content}`)}
                         </div>
-                        <div className="w-4/12">
+                        <div className="lg:w-4/12">
                             <div className="sticky top-[100px] shadow p-7">
                                 <h4 className="font-bold text-2xl">Salurkan Donasi {dataContent.attributes.title} Melalui Sidrat Alamal Jaya</h4>
                                 <div className="relative my-10">
