@@ -21,7 +21,7 @@ let snap = new Midtrans.Snap({
 // }
 
 
-export async function GET(req) {
+export async function POST(req) {
     const body = await req.json()
     axios.post("https://adm.stagingaja.com/api/transactions", {
         data: {
@@ -30,5 +30,5 @@ export async function GET(req) {
     }, config2).then((res) => res.data)
     
     // console.log({dataku})
-    return NextResponse.status(200).json(body)
+    return NextResponse.json(body)
 }
