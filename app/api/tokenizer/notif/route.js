@@ -16,12 +16,12 @@ let snap = new Midtrans.Snap({
     clientKey: process.env.NEXT_PUBLIC_CLIENT
 })
 
-export async function GET() {
-    return NextResponse.json("hello")
-}
+// export async function GET() {
+//     return NextResponse.json("hello")
+// }
 
 
-export async function POST(req) {
+export async function GET(req) {
     const body = await req.json()
     axios.post("https://adm.stagingaja.com/api/transactions", {
         data: {
