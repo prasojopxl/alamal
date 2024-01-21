@@ -30,5 +30,5 @@ export async function POST(req) {
     }, config2).then((res) => res.data)
     
     // console.log({dataku})
-    return NextResponse.json(body)
+    return NextResponse.status(200).json(body)
 }
