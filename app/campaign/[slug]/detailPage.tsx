@@ -11,6 +11,8 @@ import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import _ from "lodash"
 
 const settings = {
     dots: true,
@@ -23,6 +25,7 @@ const settings = {
 
 
 function ContentDetail() {
+    const [contentTitle, setContentTitle] = useState("")
     const pathname = useParams()
     const getQuery = async () => {
         return await getData(`/campaigns/${pathname.slug}?populate=*`)
@@ -31,6 +34,37 @@ function ContentDetail() {
         queryKey: ["campaignDetail"],
         queryFn: getQuery
     })
+    const getQuery2 = async () => {
+        return await getData(`/transactions?populate=*&filters[transaction_status]=settlement`)
+    }
+    const query2 = useQuery({
+        queryKey: ["transactions"],
+        queryFn: getQuery2
+    })
+    const dataContent = query.data?.data.data
+    const dataDonasi = query2.data?.data.data
+    const dataku = [
+        {
+            id: 1,
+            nilai: 2
+        },
+        {
+            id: 2,
+            nilai: 3
+        },
+        {
+            id: 3,
+            nilai: 1
+        }
+    ]
+    const currentDonasi = _.filter(dataDonasi, (item) => item.attributes.product === dataContent.attributes.title);
+    const totalCurrentDonation = _.sum(_.map(currentDonasi, (item) => parseInt(`${item.attributes.gross_amount}`)));
+    const target = dataContent?.attributes?.target_total_donate
+    const persentase = (parseInt(`${totalCurrentDonation}`) / parseInt((`${target}`))) * 100
+
+    //rumus: persentase_terkumpul = (terkumpul / target_nilai) * 100
+
+    console.log(totalCurrentDonation)
     if (query.isLoading) {
         return (
             <div className="wrapper relative flex justify-center mt-10">
@@ -48,8 +82,6 @@ function ContentDetail() {
             <ErrorNetwork />
         )
     }
-    const dataContent = query.data?.data.data
-    console.log(dataContent)
     return (
         <div className="wrapper">
             <div className="relative justify-between">
@@ -78,15 +110,15 @@ function ContentDetail() {
                                 <h4 className="font-bold text-2xl">Salurkan Donasi {dataContent.attributes.title} Melalui Sidrat Alamal Jaya</h4>
                                 <div className="relative my-10">
 
-                                    <div className="text-sm mb-1">Terkumpul: {(100000).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
+                                    <div className="text-sm mb-1">Terkumpul: {(parseInt(`${totalCurrentDonation}`)).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
                                     <div className="w-full bg-green-50 h-[10px] rounded-lg relative border-main-c border-solid border overflow-hidden">
-                                        <div className="absolute left-0 h-[10px] w-[40%] bg-main-c"></div>
+                                        <div className={`absolute left-0 h-[10px] bg-main-c`} style={{ width: `${persentase}%` }}></div>
                                     </div>
-                                    <div className="absolute text-[10px] left-[40%]">40%</div>
+                                    <div className="absolute text-[10px] left-[40%]">{_.round(parseFloat(`${persentase}`), 3)}%</div>
                                     <div className="bg-gray-c p-7 mt-7">
                                         <h4 className="font-bold">Info:</h4>
-                                        <div className="text-sm mb-1">Target: {(dataContent.attributes.target_total_donate).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
-                                        <div className="text-sm mb-1">Total Donator: 50</div>
+                                        <div className="text-sm mb-1">Target: {(parseInt(`${dataContent.attributes.target_total_donate}`)).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
+                                        <div className="text-sm mb-1">Total Donator: {currentDonasi?.length}</div>
                                     </div>
                                     <Link href="/donate" className="btn mt-5 inline-block">Donasi Sekarang</Link>
                                 </div>
