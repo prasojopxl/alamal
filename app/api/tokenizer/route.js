@@ -55,6 +55,5 @@ export async function POST(req) {
     })
 
     const token = await snap.createTransactionToken(parameter)
-    console.log({token})
     return NextResponse.json(token)
 }

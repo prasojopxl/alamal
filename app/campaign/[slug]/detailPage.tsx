@@ -57,14 +57,13 @@ function ContentDetail() {
             nilai: 1
         }
     ]
-    const currentDonasi = _.filter(dataDonasi, (item) => item.attributes.product === dataContent.attributes.title);
+    const currentDonasi = _.filter(dataDonasi, (item) => item.attributes.product === dataContent?.attributes.title);
     const totalCurrentDonation = _.sum(_.map(currentDonasi, (item) => parseInt(`${item.attributes.gross_amount}`)));
     const target = dataContent?.attributes?.target_total_donate
     const persentase = (parseInt(`${totalCurrentDonation}`) / parseInt((`${target}`))) * 100
 
     //rumus: persentase_terkumpul = (terkumpul / target_nilai) * 100
 
-    console.log(totalCurrentDonation)
     if (query.isLoading) {
         return (
             <div className="wrapper relative flex justify-center mt-10">
@@ -98,16 +97,16 @@ function ContentDetail() {
                     <h1 className="text-5xl relative pb-3 mb-7
                         after:content-[''] after:w-[50px] after:h-[5px] after:bg-main-c after:absolute after:left-0 after:bottom-0
                     ">
-                        {dataContent.attributes.title}
+                        {dataContent?.attributes.title}
                     </h1>
-                    <h5 className="opacity-50">Di Publish: {moment(`${dataContent.attributes.publishedAt}`).format('DD MMMM YYYY')}</h5>
+                    <h5 className="opacity-50">Di Publish: {moment(`${dataContent?.attributes.publishedAt}`).format('DD MMMM YYYY')}</h5>
                     <div className="relative min-h-[500px] flex gap-9 lg:flex-row flex-col">
                         <div className="lg:w-8/12">
-                            {parse(`${dataContent.attributes.content}`)}
+                            {parse(`${dataContent?.attributes.content}`)}
                         </div>
                         <div className="lg:w-4/12">
                             <div className="sticky top-[100px] shadow p-7">
-                                <h4 className="font-bold text-2xl">Salurkan Donasi {dataContent.attributes.title} Melalui Sidrat Alamal Jaya</h4>
+                                <h4 className="font-bold text-2xl">Salurkan Donasi {dataContent?.attributes.title} Melalui Sidrat Alamal Jaya</h4>
                                 <div className="relative my-10">
 
                                     <div className="text-sm mb-1">Terkumpul: {(parseInt(`${totalCurrentDonation}`)).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
@@ -117,7 +116,7 @@ function ContentDetail() {
                                     <div className="absolute text-[10px] left-[40%]">{_.round(parseFloat(`${persentase}`), 3)}%</div>
                                     <div className="bg-gray-c p-7 mt-7">
                                         <h4 className="font-bold">Info:</h4>
-                                        <div className="text-sm mb-1">Target: {(parseInt(`${dataContent.attributes.target_total_donate}`)).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
+                                        <div className="text-sm mb-1">Target: {(parseInt(`${dataContent?.attributes.target_total_donate}`)).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
                                         <div className="text-sm mb-1">Total Donator: {currentDonasi?.length}</div>
                                     </div>
                                     <Link href="/donate" className="btn mt-5 inline-block">Donasi Sekarang</Link>

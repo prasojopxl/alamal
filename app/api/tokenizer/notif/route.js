@@ -30,7 +30,6 @@ export async function POST(req) {
         return res.data.data[0].id
     })
 
-    console.log({dataById})
 
 
     await axios.put(`https://adm.stagingaja.com/api/transactions/${dataById}`, {
