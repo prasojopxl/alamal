@@ -85,7 +85,16 @@ function Donate() {
                 <h4 className="mt-3">Email</h4>
                 <input onChange={(e) => setDataDonator({ ...dataDonator, email: e.target.value })} type="email" className="border px-3 py-1 w-full" />
                 <h4 className="mt-3">Nominal</h4>
-                <input onChange={(e) => setDataDonator({ ...dataDonator, nominal: e.target.value })} type="number" className="border px-3 py-1 w-full" />
+                <input onChange={(e) => setDataDonator({ ...dataDonator, nominal: e.target.value })} type="number" className="border px-3 py-1 w-full" value={`${dataDonator.nominal}`} />
+                <ul className="my-3 flex flex-wrap text-sm gap-2
+                    [&_li]:bg-slate-300 [&_li]:text-c-main [&_li]:rounded-full [&_li]:px-4 [&_li]:py-2 [&_li]:hover:cursor-pointer
+                ">
+                    <li onClick={(e) => setDataDonator({ ...dataDonator, nominal: 20000 })} className="hover:bg-orange-c hover:text-white">Rp. 20 k</li>
+                    <li onClick={(e) => setDataDonator({ ...dataDonator, nominal: 50000 })} className="hover:bg-orange-c hover:text-white">Rp. 50 k</li>
+                    <li onClick={(e) => setDataDonator({ ...dataDonator, nominal: 100000 })} className="hover:bg-orange-c hover:text-white">Rp. 100 k</li>
+                    <li onClick={(e) => setDataDonator({ ...dataDonator, nominal: 500000 })} className="hover:bg-orange-c hover:text-white">Rp. 500 k</li>
+                    <li onClick={(e) => setDataDonator({ ...dataDonator, nominal: 1000000 })} className="hover:bg-orange-c hover:text-white">Rp. 1.000 k</li>
+                </ul>
                 <h4 className="mt-3">Jenis Donasi</h4>
                 <select onChange={(e) => setDataDonator({ ...dataDonator, productName: e.target.value })} className="border px-3 py-2 w-full">
                     {
@@ -98,8 +107,9 @@ function Donate() {
                     }
                 </select>
                 {
-                    dataDonator.nama !== "" && dataDonator.email !== "" && dataDonator.nominal !== "" ?
-                        <button className="bg-orange-c text-white w-full mt-5 py-2 rounded" onClick={donatenow}>Donasi</button> : <button className="bg-orange-c text-white w-full mt-5 py-2 rounded opacity-35 cursor-default">Donasi</button>
+                    (dataDonator.nama == null || dataDonator.nama == "") || (dataDonator.email == "" || dataDonator.email == null) || dataDonator.nominal == "" || dataDonator.nominal == null ?
+                        <button className="bg-orange-c text-white w-full mt-5 py-2 rounded opacity-35 cursor-default">Donasi</button>
+                        : <button className="bg-orange-c text-white w-full mt-5 py-2 rounded" onClick={donatenow}>Donasi</button>
                 }
 
             </div>
