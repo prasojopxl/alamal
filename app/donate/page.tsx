@@ -104,7 +104,7 @@ function Donate() {
                         localStorage.getItem("productCampaign") ?
                             <div>
                                 <div className="bg-orange-c text-white w-full mt-2 p-5 rounded">Anda akan mendonasikan ke <strong>{localStorage.getItem("productCampaign")}</strong></div>
-                                <div className="opacity-50">Klik di <Link href="/campaign" className="underline">sini</Link> untuk melihat atau mengubah jenis donasi anda</div>
+                                <div className="opacity-50 mt-1">Klik di <Link href="/campaign" className="underline font-bold text-c-main">sini</Link> untuk melihat atau mengubah jenis donasi anda</div>
                             </div>
                             :
                             <div>

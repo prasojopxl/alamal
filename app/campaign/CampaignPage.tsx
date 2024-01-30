@@ -4,9 +4,8 @@ import { getData, getDataOpen } from "../utils/services"
 import Basecontent from "@/components/basecontent"
 import ErrorNetwork from "@/components/errorNetwork"
 import parse from "html-react-parser";
-import Image from "next/image"
 import { urlMedia } from "../utils/vars"
-import Link from "next/link"
+import ItemCampign from "./ItemCampign"
 
 function CampaignContent() {
     const getQuery = async () => {
@@ -19,11 +18,11 @@ function CampaignContent() {
 
     if (query.isLoading) {
         return (
-            <div className="wrapper relative flex justify-center mt-10">
-                <div className="animate-pulse w-full">
-                    <div className="rounded-sm bg-slate-200 h-[30px] w-full "></div>
-                    <div className="rounded-sm bg-slate-200 h-[30px] w-[700px] my-5"></div>
-                    <div className="rounded-sm bg-slate-200 h-[30px] w-[200px] "></div>
+            <div className="wrapper relative flex justify-center ">
+                <div className="animate-pulse flex justify-between gap-7 mb-24 lg:flex-row flex-col w-full">
+                    <div className="flex-1 rounded-sm bg-slate-200 h-[300px]"></div>
+                    <div className="flex-1 rounded-sm bg-slate-200 h-[300px]"></div>
+                    <div className="flex-1 rounded-sm bg-slate-200 h-[300px]"></div>
                 </div>
             </div>
         )
@@ -35,28 +34,7 @@ function CampaignContent() {
         )
     }
 
-    const setLocalStorage = (productName: string) => {
-        localStorage.setItem('productCampaign', productName);
-    }
-
-
     const dataContent = query.data?.data
-    function Item(props: any) {
-        return (
-            <Link href={props.link ? props.link : "/blog/slug"} className="lg:w-4/12 w-full p-3">
-                <div className="rounded-[10px] overflow-hidden border-[#DEE3EB] border-solid border-[1px]" onClick={() => setLocalStorage(props.title)}>
-                    <div className="relative w-[369px] h-[229px] overflow-hidden mx-auto">
-                        <Image src={`${props.image}`} alt="" fill />
-                    </div>
-                    <div className="p-5">
-                        <h5 className="uppercase text-c-green font-medium text-[16px]">{props.category}</h5>
-                        <h4 className="font-bold text-[24px] line-clamp-2 clamp-hack max-h-[70px]">{props.title}</h4>
-                        <div className="mt-0 line-clamp-3 clamp-hack [&_p]:mt-2 overflow-hidden max-h-[85px]">{props.description}</div>
-                    </div>
-                </div>
-            </Link>
-        )
-    }
 
     return (
         <div>
@@ -64,7 +42,7 @@ function CampaignContent() {
                 {
                     query.isSuccess ? dataContent?.data?.map((item: any) => {
                         return (
-                            <Item key={item.id}
+                            <ItemCampign key={item.id}
                                 link={`/campaign/${item.id}`}
                                 image={item.attributes.mainimage ? urlMedia + item.attributes.mainimage.data.attributes.url : "/images/donate-image.jpg"}
                                 category="Donasi"

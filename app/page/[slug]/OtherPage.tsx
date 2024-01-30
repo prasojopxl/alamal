@@ -1,15 +1,17 @@
 "use client"
 import { useQuery } from "@tanstack/react-query"
-import { getDataOpen } from "../utils/services"
+import { getData } from "../../utils/services"
 import ErrorNetwork from "@/components/errorNetwork"
 import parse from "html-react-parser";
 import Basecontent from "@/components/basecontent"
 import Image from "next/image"
-import { urlMedia } from "../utils/vars"
+import { urlMedia } from "../../utils/vars"
+import { useParams } from 'next/navigation'
 
-function ProgramContent() {
+function PageContent() {
+    const pathname = useParams()
     const getQuery = async () => {
-        return await getDataOpen("/posts/2?populate=*")
+        return await getData(`/other-pages/${pathname.slug}?populate=*`)
     }
     const query = useQuery({
         queryKey: ["program"],
@@ -35,27 +37,36 @@ function ProgramContent() {
     }
 
 
-    const dataContent = query.data?.data.data.attributes?.content
-    const dataImage = query.data?.data.data.attributes?.main_image
+    const dataContent = query.data?.data.data.attributes
+    const dataImage = query.data?.data.data.attributes?.image
     return (
         <div>
+            <div className="relative bg-main-c w-full h-[200px] flex justify-center items-center mb-14">
+                <div className="absolute text-[200px] text-white opacity-20"></div>
+                <h1 className="text-white text-5xl font-bold relative">{dataContent?.title}</h1>
+            </div>
+
             {
-                dataImage?.data ? <div className="relative w-full mx-auto text-center mb-5">
-                    <Image src={urlMedia + dataImage?.data?.attributes?.url} width={dataImage?.data?.attributes?.width} height={dataImage?.data?.attributes?.height} className="mx-auto" alt="image" />
+                dataImage?.data ? <div className="relative wrapper w-full mx-auto text-center mb-5">
+
+                    {
+                        dataImage?.data ? <Image src={urlMedia + dataImage?.data?.attributes?.url} width={dataImage?.data?.attributes?.width} height={dataImage?.data?.attributes?.height} className="mx-auto" alt="image" />
+                            : null
+                    }
                 </div> : null
             }
             <div className="max-w-[1000px] mx-auto [&_ol]:list-decimal">
-                {parse(`${dataContent}`)}
+                {parse(`${dataContent?.content}`)}
             </div>
         </div>
     )
 }
-export default function ProgramPage() {
+export default function OtherPage() {
 
     return (
         <div>
             <Basecontent>
-                <ProgramContent />
+                <PageContent />
             </Basecontent>
         </div>
     )

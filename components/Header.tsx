@@ -1,25 +1,38 @@
 "use client"
 import Link from "next/link";
 import { IoLogoWhatsapp } from "react-icons/io";
-import { FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { RiMenu3Fill } from "react-icons/ri";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import Basecontent from "./basecontent";
+import { getData } from "@/app/utils/services";
+import _ from "lodash";
 
-export default function Header() {
+function HeaderContent() {
     const [menuXS, setMenuXS] = useState(false);
+    const getQuery2 = async () => {
+        return await getData(`/general?populate=*`)
+    }
+    const query2 = useQuery({
+        queryKey: ["general"],
+        queryFn: getQuery2
+    })
+    const general = query2.data?.data.data.attributes
+    const whatsapp = _.slice(`${general?.whatsapp}`, 1).join("")
     return (
         <>
             <div className="bg-gray py-2">
                 <div className="wrapper">
                     <div className="flex items-center justify-between text-[14px]">
-                        <div className="flex items-center gap-2">
-                            Wa Center:
-                            <Link href="/" className="flex items-center gap-1"><IoLogoWhatsapp className="text-green-500" /><span>0815 2222 2222</span></Link>
-                        </div>
+                        {general?.whatsapp ? <Link target="_blank" href={`https://api.whatsapp.com/send?phone=62${whatsapp}&text=Halo%20Salamal,`} className="flex items-center gap-1"><IoLogoWhatsapp className="text-green-500" /><span>{general?.whatsapp}</span></Link> : null}
+                        { }
                         <div className="flex gap-3">
-                            <Link href="/"><FaFacebook /></Link>
-                            <Link href="/"><FaInstagram /></Link>
+                            {general?.facebook ? <Link href={`${general?.facebook}`}><FaFacebook /></Link> : null}
+                            {general?.instagram ? <Link href={`${general?.instagram}`}><FaInstagram /></Link> : null}
+                            {general?.linkedin ? <Link href={`${general?.linkedin}`}><FaLinkedin /></Link> : null}
+                            {general?.youtube ? <Link href={`${general?.youtube}`}><FaYoutube /></Link> : null}
                         </div>
                     </div>
                 </div>
@@ -28,7 +41,7 @@ export default function Header() {
                 <div className="wrapper">
                     <div className="flex items-center justify-between lg:py-4">
                         <div className="flex justify-between font-black text-3xl">
-                            <Link href="/" className="text-orange-c"><Image src="/images/logo.jpeg" width={70} height={70} alt="logo" /></Link>
+                            <Image src={general?.logo.data ? process.env.URL_MEDIA + general?.logo.data.attributes.url : "/images/logo.png"} width={70} height={70} alt="logo" />
                         </div>
                         <div className="relative lg:flex items-center gap-7 hidden">
                             <ul className="flex items-center gap-7 font-medium text-[16px]">
@@ -57,5 +70,12 @@ export default function Header() {
                 </div> : null
             }
         </>
+    )
+}
+export default function Header() {
+    return (
+        <Basecontent>
+            <HeaderContent />
+        </Basecontent>
     )
 }

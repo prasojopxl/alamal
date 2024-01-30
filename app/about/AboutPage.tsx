@@ -40,8 +40,8 @@ function AboutContent() {
     return (
         <div className="max-w-[1000px] mx-auto">
             {
-                dataImage?.data ? <div className="relative w-full">
-                    <Image src={urlMedia + dataImage?.data.attributes?.url} width={dataImage?.data.attributes?.width} height={dataImage?.data.attributes?.height} alt="image" />
+                dataImage?.data ? <div className="relative w-full mx-auto text-center">
+                    <Image src={urlMedia + dataImage?.data.attributes?.url} width={dataImage?.data.attributes?.width} height={dataImage?.data.attributes?.height} className="mx-auto" alt="image" />
                 </div> : null
             }
             <div className="[&_h3]:bg-pink-c [&_h3]:p-3 [&_h3]:rounded [&_h3]:mt-[30px] [&_h3]:block

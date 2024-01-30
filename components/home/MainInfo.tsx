@@ -15,9 +15,7 @@ function ItemInfo(props: any) {
                 <h5 className="font-light">{props.subtitle}</h5>
                 <h3 className="text-3xl font-bold">{props.title}</h3>
                 <div className="flex justify-center items-center py-3">
-                    {
-                        <Image src={props.image} width={props.width} height={props.height} alt={props.title} />
-                    }
+                    <Image src={props.image} width={props.width} height={props.height} alt={props.title} />
                 </div>
                 {props.children}
             </div>
@@ -63,8 +61,8 @@ export default function MainInfo() {
                                     bgcolor={item.attributes.bg_color_class}
                                     title={item.attributes.title}
                                     image={`${item.attributes.image.data !== null ? process.env.URL_MEDIA + item.attributes.image.data?.attributes.url : "/images/no-image-square.jpg"}`}
-                                    width={item.attributes.image.data !== null ? item.attributes.image.data?.attributes.width : 100}
-                                    height={item.attributes.image.data !== null ? item.attributes.image.data?.attributes.height : 100}
+                                    width={item.attributes.image.data !== null ? item.attributes.image.data?.attributes.width : 200}
+                                    height={item.attributes.image.data !== null ? item.attributes.image.data?.attributes.height : 200}
                                 >
                                     <p>Aperiam ratione, error odit at velit culpa eos numquam a illum saepe ad distinctio praesentium impedit</p>
                                 </ItemInfo>
