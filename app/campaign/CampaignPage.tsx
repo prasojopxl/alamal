@@ -35,11 +35,16 @@ function CampaignContent() {
         )
     }
 
+    const setLocalStorage = (productName: string) => {
+        localStorage.setItem('productCampaign', productName);
+    }
+
+
     const dataContent = query.data?.data
     function Item(props: any) {
         return (
             <Link href={props.link ? props.link : "/blog/slug"} className="lg:w-4/12 w-full p-3">
-                <div className="rounded-[10px] overflow-hidden border-[#DEE3EB] border-solid border-[1px]">
+                <div className="rounded-[10px] overflow-hidden border-[#DEE3EB] border-solid border-[1px]" onClick={() => setLocalStorage(props.title)}>
                     <div className="relative w-[369px] h-[229px] overflow-hidden mx-auto">
                         <Image src={`${props.image}`} alt="" fill />
                     </div>
