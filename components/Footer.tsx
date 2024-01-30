@@ -20,7 +20,7 @@ export default function Footer() {
                         </div>
                         <div className="lg:w-3/12 w-full lg:p-5">
                             <h4 className="mt-3 text-[21px] font-bold mb-2  ">MAIN LINKS</h4>
-                            <ul className="[&_a]:py-1 [&_a]:text-[14px]">
+                            <ul className="[&_a]:block [&_a]:py-[2px]">
                                 <li><Link href="/">Home</Link></li>
                                 <li><Link href="/about">Tentang Kami</Link></li>
                                 <li><Link href="/program">Program</Link></li>
@@ -29,7 +29,7 @@ export default function Footer() {
                         </div>
                         <div className="lg:w-3/12 w-full lg:p-5">
                             <h4 className="mt-3 text-[21px] font-bold mb-2  ">QUICK LINKS</h4>
-                            <ul className="[&_a]:py-1 [&_a]:text-[14px]">
+                            <ul className="[&_a]:block [&_a]:py-[2px]">
                                 <li><Link href="/tnc">Syarat dan Ketentuan</Link></li>
                                 <li><Link href="/policy">Kebijakan Privasi</Link></li>
                             </ul>
