@@ -43,11 +43,11 @@ function PageContent() {
         <div>
             <div className="relative bg-main-c w-full h-[200px] flex justify-center items-center mb-14">
                 <div className="absolute text-[200px] text-white opacity-20"></div>
-                <h1 className="text-white text-5xl font-bold relative">{dataContent?.title}</h1>
+                <h1 className="text-white text-5xl font-bold relative mx-3">{dataContent?.title}</h1>
             </div>
 
             {
-                dataImage?.data ? <div className="relative wrapper w-full mx-auto text-center mb-5">
+                dataImage?.data ? <div className="relative wrapper w-full lg:mx-auto mx-2 text-center mb-5">
 
                     {
                         dataImage?.data ? <Image src={urlMedia + dataImage?.data?.attributes?.url} width={dataImage?.data?.attributes?.width} height={dataImage?.data?.attributes?.height} className="mx-auto" alt="image" />
@@ -55,7 +55,7 @@ function PageContent() {
                     }
                 </div> : null
             }
-            <div className="max-w-[1000px] mx-auto [&_ol]:list-decimal">
+            <div className="max-w-[1000px] lg:mx-auto mx-3 [&_ol]:list-decimal">
                 {parse(`${dataContent?.content}`)}
             </div>
         </div>

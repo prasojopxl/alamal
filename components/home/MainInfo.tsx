@@ -13,9 +13,9 @@ function ItemInfo(props: any) {
         <div className={`flex-1`} style={{ backgroundColor: `${props.bgcolor}` }}>
             <div className={`p-7 text-center`}>
                 <h5 className="font-light">{props.subtitle}</h5>
-                <h3 className="text-3xl font-bold">{props.title}</h3>
-                <div className="flex justify-center items-center py-3">
-                    <Image src={props.image} width={props.width} height={props.height} alt={props.title} />
+                <h3 className="text-3xl font-bold mb-2">{props.title}</h3>
+                <div className="flex justify-center items-center py-3 h-[250px] [&_img]:max-w-[220px] ">
+                    <Image src={props.image} width={props.width} height={props.height} alt={props.title} className="max-w-[100%]" />
                 </div>
                 {props.children}
             </div>

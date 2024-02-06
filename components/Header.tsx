@@ -40,9 +40,9 @@ function HeaderContent() {
             <div className="bg-white sticky top-0 z-20">
                 <div className="wrapper">
                     <div className="flex items-center justify-between lg:py-4">
-                        <div className="flex justify-between font-black text-3xl">
+                        <Link href="/" className="flex justify-between font-black text-3xl">
                             <Image src={general?.logo.data ? process.env.URL_MEDIA + general?.logo.data.attributes.url : "/images/logo.png"} width={70} height={70} alt="logo" />
-                        </div>
+                        </Link>
                         <div className="relative lg:flex items-center gap-7 hidden">
                             <ul className="flex items-center gap-7 font-medium text-[16px]">
                                 <li><Link href="/">Home</Link></li>
