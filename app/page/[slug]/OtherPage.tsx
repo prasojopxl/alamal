@@ -1,6 +1,6 @@
 "use client"
 import { useQuery } from "@tanstack/react-query"
-import { getData } from "../../utils/services"
+import { getData, getDataSelf } from "../../utils/services"
 import ErrorNetwork from "@/components/errorNetwork"
 import parse from "html-react-parser";
 import Basecontent from "@/components/basecontent"
@@ -11,7 +11,7 @@ import { useParams } from 'next/navigation'
 function PageContent() {
     const pathname = useParams()
     const getQuery = async () => {
-        return await getData(`/other-pages/${pathname.slug}?populate=*`)
+        return await getDataSelf(`/api/salamal?otherpage=${pathname.slug}`)
     }
     const query = useQuery({
         queryKey: ["program"],
@@ -37,8 +37,9 @@ function PageContent() {
     }
 
 
-    const dataContent = query.data?.data.data.attributes
-    const dataImage = query.data?.data.data.attributes?.image
+    const dataContent = query.data?.data.attributes
+    const dataImage = query.data?.data.attributes?.image
+    console.log(dataContent)
     return (
         <div>
             <div className="relative bg-main-c w-full h-[200px] flex justify-center items-center mb-14">

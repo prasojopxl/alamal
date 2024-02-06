@@ -80,7 +80,7 @@ function FooterContent() {
                                 {
                                     query.data?.data.data.map((item: any) => {
                                         return (
-                                            <li key={item.id}><Link href={`/page/${item.id}`}>{item.attributes.title && item.attributes.title}</Link></li>
+                                            <li key={item.id}><Link href={`/page/${item.attributes.slug}`}>{item.attributes.title && item.attributes.title}</Link></li>
 
                                         )
                                     })
