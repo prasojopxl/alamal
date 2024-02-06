@@ -6,6 +6,7 @@ import Basecontent from "../basecontent";
 import { useQuery } from "@tanstack/react-query"
 import ErrorNetwork from "../errorNetwork";
 import { getData } from "@/app/utils/services";
+import parse from "html-react-parser";
 
 
 function ItemInfo(props: any) {
@@ -47,7 +48,6 @@ export default function MainInfo() {
             <ErrorNetwork />
         )
     }
-    console.log(query.data?.data.data)
     return (
         <div className="wrapper">
             <Basecontent>
@@ -64,7 +64,7 @@ export default function MainInfo() {
                                     width={item.attributes.image.data !== null ? item.attributes.image.data?.attributes.width : 200}
                                     height={item.attributes.image.data !== null ? item.attributes.image.data?.attributes.height : 200}
                                 >
-                                    <p>Aperiam ratione, error odit at velit culpa eos numquam a illum saepe ad distinctio praesentium impedit</p>
+                                    <div className="line-clamp-custom-6">{parse(`${item.attributes.shrot_description}`)}</div>
                                 </ItemInfo>
                             )
                         })

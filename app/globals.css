@@ -49,3 +49,48 @@ ol li {
 .sliderdetail .slick-dots li.slick-active button::before{
     @apply text-main-c
 }
+
+.line-clamp-custom-2{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.line-clamp-custom-3{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.line-clamp-custom-4{
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.line-clamp-custom-5{
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.line-clamp-custom-6{
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

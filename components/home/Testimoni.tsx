@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Image from "next/image";
-import Basecontent from "../basecontent";
 import { useQuery } from "@tanstack/react-query"
 import ErrorNetwork from "../errorNetwork";
 import { getData } from "@/app/utils/services";
@@ -52,7 +51,6 @@ export default function Testimoni() {
         ]
 
     };
-    console.log(query.data?.data.data)
     return (
         <>
             {
