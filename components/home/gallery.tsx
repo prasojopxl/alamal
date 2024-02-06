@@ -54,7 +54,7 @@ export default function Gallery() {
                                                 <Dialog>
                                                     <DialogTrigger className="hover:opacity-80">
                                                         <div className="w-full h-[170px] flex justify-center ">
-                                                            <Image src={`${process.env.URL_MEDIA}${item.attributes.image.data.attributes.url}`} width={item.attributes.image.data.attributes.width} height={item.attributes.image.data.attributes.height} alt="image" />
+                                                            <Image src={`${process.env.URL_MEDIA}${item.attributes.image.data?.attributes.url}`} width={item.attributes.image.data?.attributes.width} height={item.attributes.image.data?.attributes.height} alt="image" />
                                                         </div>
                                                         <div className="p-3 text-lg text-center capitalize">{item.attributes.title}</div>
                                                     </DialogTrigger>
@@ -63,7 +63,7 @@ export default function Gallery() {
                                                             <DialogTitle>
                                                                 <div className="capitalize mb-3 text-2xl">{item.attributes.title}</div></DialogTitle>
                                                             <DialogDescription>
-                                                                <Image src={`${process.env.URL_MEDIA}${item.attributes.image.data.attributes.url}`} width={item.attributes.image.data.attributes.width} height={item.attributes.image.data.attributes.height} alt="image" />
+                                                                <Image src={`${process.env.URL_MEDIA}${item.attributes.image.data?.attributes.url}`} width={item.attributes.image.data?.attributes.width} height={item.attributes.image.data?.attributes.height} alt="image" />
                                                             </DialogDescription>
                                                         </DialogHeader>
                                                     </DialogContent>

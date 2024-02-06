@@ -36,6 +36,7 @@ function CampaignContent() {
 
     const dataContent = query.data?.data
 
+    console.log(dataContent?.data)
     return (
         <div>
             <div className="flex flex-wrap -mx-3">
@@ -44,7 +45,7 @@ function CampaignContent() {
                         return (
                             <ItemCampign key={item.id}
                                 link={`/campaign/${item.id}`}
-                                image={item.attributes.mainimage ? urlMedia + item.attributes.mainimage.data.attributes.url : "/images/donate-image.jpg"}
+                                image={item.attributes.mainimage ? urlMedia + item.attributes.mainimage.data[0].attributes?.url : "/images/donate-image.jpg"}
                                 category="Donasi"
                                 title={item.attributes.title}
                                 description={parse(item.attributes.content)}

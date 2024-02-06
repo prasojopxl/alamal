@@ -13,6 +13,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import _ from "lodash"
+import { urlMedia } from "@/app/utils/vars";
 
 const settings = {
     dots: true,
@@ -43,25 +44,12 @@ function ContentDetail() {
     })
     const dataContent = query.data?.data.data
     const dataDonasi = query2.data?.data.data
-    const dataku = [
-        {
-            id: 1,
-            nilai: 2
-        },
-        {
-            id: 2,
-            nilai: 3
-        },
-        {
-            id: 3,
-            nilai: 1
-        }
-    ]
     const currentDonasi = _.filter(dataDonasi, (item) => item.attributes.product === dataContent?.attributes.title);
     const totalCurrentDonation = _.sum(_.map(currentDonasi, (item) => parseInt(`${item.attributes.gross_amount}`)));
     const target = dataContent?.attributes?.target_total_donate
     const persentase = (parseInt(`${totalCurrentDonation}`) / parseInt((`${target}`))) * 100
 
+    console.log(dataContent?.attributes.mainimage)
     //rumus: persentase_terkumpul = (terkumpul / target_nilai) * 100
 
     if (query.isLoading) {
@@ -81,16 +69,26 @@ function ContentDetail() {
             <ErrorNetwork />
         )
     }
+    console.log(dataContent?.attributes.mainimage.data)
     return (
         <div className="wrapper">
             <div className="relative justify-between">
                 <div>
-                    <div className="sliderdetail mb-7">
-                        <Slider {...settings}>
-                            <div><Image src="/images/banner-img-1.jpg" alt="" width={1919} height={900} /></div>
-                            <div><Image src="/images/banner-img-1.jpg" alt="" width={1919} height={900} /></div>
-                            <div><Image src="/images/banner-img-1.jpg" alt="" width={1919} height={900} /></div>
-                        </Slider>
+                    <div className="sliderdetail mb-7 mx-auto">
+                        {
+                            dataContent?.attributes.mainimage.data ?
+                                <Slider {...settings}>
+                                    {
+                                        dataContent?.attributes.mainimage.data.map((item: any) => {
+                                            return (
+                                                <div key={item.id}><Image src={urlMedia + item.attributes.url} alt={item.attributes.name} width={item.attributes.width} height={item.attributes.height} className="mx-auto" />
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </Slider> : null
+                        }
+
                     </div>
                 </div>
                 <div className="relative pt-7">
