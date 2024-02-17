@@ -85,7 +85,6 @@ function Donate() {
         }
         donatenow()
     }
-    console.log(localStorage.getItem("productCampaign"))
 
 
 
