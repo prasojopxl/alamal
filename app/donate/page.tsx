@@ -1,7 +1,7 @@
 "use client"
 import axios from "axios"
 import React from 'react'
-import _ from "lodash";
+import _, { values } from "lodash";
 import { useEffect, useState } from "react";
 import Basecontent from "@/components/basecontent";
 import { useQuery } from "@tanstack/react-query"
@@ -68,7 +68,7 @@ function Donate() {
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
-            nominal: valNominal
+            nominal: valNominal,
         },
     })
     function onSubmit(values: z.infer<typeof formSchema>) {
@@ -154,7 +154,7 @@ function Donate() {
                                     name="nominal"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Nominal</FormLabel>
+                                            <FormLabel>Nominal (IDR / Rupiah)</FormLabel>
                                             <FormControl>
                                                 <Input type="number" placeholder="Nominal" {...field} />
                                             </FormControl>
