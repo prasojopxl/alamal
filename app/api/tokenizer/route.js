@@ -3,7 +3,7 @@ import {NextResponse} from "next/server"
 import axios from "axios"
 
 let snap = new Midtrans.Snap({
-    isProduction: false,
+    isProduction: true,
     serverKey: process.env.NEXT_PUBLIC_SECRET,
     clientKey: process.env.NEXT_PUBLIC_CLIENT
 })
