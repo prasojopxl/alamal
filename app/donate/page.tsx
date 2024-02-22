@@ -203,7 +203,7 @@ function Donate() {
 
 export default function DonatePage() {
     useEffect(() => {
-        const snapScript = "https://app.sandbox.midtrans.com/snap/snap.js"
+        const snapScript = "https://app.midtrans.com/snap/snap.js"
         const script = document.createElement('script');
         const clientKey: any = process.env.NEXT_PUBLIC_CLIENT
         script.src = snapScript;
