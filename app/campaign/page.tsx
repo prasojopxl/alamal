@@ -1,6 +1,11 @@
 import React from 'react'
 import CampaignPage from "./CampaignPage"
 import { BiDonateHeart } from "react-icons/bi";
+import { Metadata } from 'next';
+
+export const medat: Metadata = {
+    title: "Sidrat Alamal Jaya Campaign",
+};
 
 export default function PageAbout() {
     return (

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Payment Donation",
 };
 
-export default function DonatePage() {
+export default function DonatePage({ params }: any) {
     return (
         <Basecontent>
             <SectionDonate />

@@ -2,6 +2,13 @@ import React from 'react'
 import AboutPage from "./AboutPage"
 import { VscOrganization } from "react-icons/vsc";
 
+import { Metadata } from 'next';
+
+export const medat: Metadata = {
+    title: "Sidrat Alamal Jaya About",
+};
+
+
 export default function PageAbout() {
     return (
         <div>
