@@ -121,6 +121,8 @@ function ContentDetail() {
                     </div>
                 </div>
             </div>
+            <Link href="/donate" className="btn mt-5 block fixed z-10 bottom-0 w-full left-0 rounded-none text-center lg:hidden" style={{ padding: "17px 8px " }}>Donasi Sekarang</Link>
+
         </div>
     )
 }
@@ -130,7 +132,6 @@ export default function DetailPage() {
         <div>
             <Basecontent>
                 <ContentDetail />
-                <Link href="/donate" className="btn mt-5 block sticky z-10 bottom-0 w-full left-0 rounded-none text-center lg:hidden" style={{ padding: "12px 8px " }}>Donasi Sekarang</Link>
             </Basecontent>
         </div>
     )
