@@ -3,7 +3,7 @@ import CampaignPage from "./CampaignPage"
 import { BiDonateHeart } from "react-icons/bi";
 import { Metadata } from 'next';
 
-export const medat: Metadata = {
+export const metadata: Metadata = {
     title: "Sidrat Alamal Jaya Campaign",
 };
 

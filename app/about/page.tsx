@@ -4,7 +4,7 @@ import { VscOrganization } from "react-icons/vsc";
 
 import { Metadata } from 'next';
 
-export const medat: Metadata = {
+export const metadata: Metadata = {
     title: "Sidrat Alamal Jaya About",
 };
 

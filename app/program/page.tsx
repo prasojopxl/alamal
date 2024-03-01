@@ -4,7 +4,7 @@ import { BiDonateBlood } from "react-icons/bi";
 import ProgramPage from "./ProgramPage";
 import { Metadata } from 'next';
 
-export const medat: Metadata = {
+export const metadata: Metadata = {
     title: "Sidrat Alamal Jaya Program",
 };
 
