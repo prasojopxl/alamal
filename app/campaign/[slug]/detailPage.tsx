@@ -48,8 +48,6 @@ function ContentDetail() {
     const totalCurrentDonation = _.sum(_.map(currentDonasi, (item) => parseInt(`${item.attributes.gross_amount}`)));
     const target = dataContent?.attributes?.target_total_donate
     const persentase = (parseInt(`${totalCurrentDonation}`) / parseInt((`${target}`))) * 100
-
-    console.log(dataContent?.attributes.mainimage)
     //rumus: persentase_terkumpul = (terkumpul / target_nilai) * 100
 
     if (query.isLoading) {
@@ -69,7 +67,6 @@ function ContentDetail() {
             <ErrorNetwork />
         )
     }
-    console.log(dataContent?.attributes.mainimage.data)
     return (
         <div className="wrapper">
             <div className="relative justify-between">
@@ -117,7 +114,7 @@ function ContentDetail() {
                                         <div className="text-sm mb-1">Target: {(parseInt(`${dataContent?.attributes.target_total_donate}`)).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
                                         <div className="text-sm mb-1">Total Donator: {currentDonasi?.length}</div>
                                     </div>
-                                    <Link href="/donate" className="btn mt-5 inline-block">Donasi Sekarang</Link>
+                                    <Link href="/donate" className="btn mt-5 hidden lg:inline-block ">Donasi Sekarang</Link>
                                 </div>
                             </div>
                         </div>
@@ -134,6 +131,7 @@ export default function DetailPage() {
             <Basecontent>
                 <ContentDetail />
             </Basecontent>
+            <Link href="/donate" className="btn mt-5 block sticky z-10 bottom-0 w-full left-0 rounded-none text-center lg:hidden" style={{ padding: "12px 8px " }}>Donasi Sekarang</Link>
         </div>
     )
 }

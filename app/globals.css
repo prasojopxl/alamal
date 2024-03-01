@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-    @apply bg-white text-[16px]
+    overflow-x:hidden !important;    
+    @apply bg-white text-[16px] 
 }
 
 .wrapper {
