@@ -104,17 +104,23 @@ function ContentDetail() {
                                 <h4 className="font-bold text-2xl">Salurkan Donasi {dataContent?.attributes.title} Melalui Sidrat Alamal Jaya</h4>
                                 <div className="relative my-10">
 
-                                    <div className="text-sm mb-1">Terkumpul: {(parseInt(`${totalCurrentDonation}`)).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
-                                    <div className="w-full bg-green-50 h-[10px] rounded-lg relative border-main-c border-solid border overflow-hidden">
-                                        <div className={`absolute left-0 h-[10px] bg-main-c`} style={{ width: `${persentase}%` }}></div>
-                                    </div>
-                                    <div className="absolute text-[10px] left-[40%]">{_.round(parseFloat(`${persentase}`), 3)}%</div>
-                                    <div className="bg-gray-c p-7 mt-7">
-                                        <h4 className="font-bold">Info:</h4>
-                                        <div className="text-sm mb-1">Target: {(parseInt(`${dataContent?.attributes.target_total_donate}`)).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
-                                        <div className="text-sm mb-1">Total Donator: {currentDonasi?.length}</div>
-                                    </div>
-                                    <Link href="/donate" className="btn mt-5 hidden lg:inline-block ">Donasi Sekarang</Link>
+                                    {
+                                        persentase > 0 && <>
+                                            <div className="text-sm mb-1">Terkumpul: {(parseInt(`${totalCurrentDonation}`)).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
+                                            <div className="w-full bg-green-50 h-[10px] rounded-lg relative border-main-c border-solid border overflow-hidden">
+                                                <div className={`absolute left-0 h-[10px] bg-main-c`} style={{ width: `${persentase}%` }}></div>
+                                            </div>
+                                            <div className="absolute text-[10px] left-[40%]">{_.round(parseFloat(`${persentase}`), 3)}%</div>
+                                            <div className="bg-gray-c p-7 mt-7 mb-5">
+                                                <h4 className="font-bold">Info:</h4>
+                                                <div className="text-sm mb-1">Target: {(parseInt(`${dataContent?.attributes.target_total_donate}`)).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</div>
+                                                <div className="text-sm mb-1">Total Donator: {currentDonasi?.length}</div>
+                                            </div>
+
+                                        </>
+                                    }
+
+                                    <Link href="/donate" className="btn  hidden lg:inline-block ">Donasi Sekarang</Link>
                                 </div>
                             </div>
                         </div>
