@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { useRouter } from 'next/navigation'
 
 interface iDonate {
     id: string
@@ -115,6 +116,7 @@ function Donate() {
 
     const dataCampaign = query.data?.data.data
 
+
     return (
         <div className="wrapper">
             <Form {...form}>
@@ -200,8 +202,11 @@ function Donate() {
     )
 }
 
+
 export default function SectionDonate() {
+    const router = useRouter()
     useEffect(() => {
+        !localStorage.getItem("productCampaign") && router.push("/campaign")
         const snapScript = "https://app.midtrans.com/snap/snap.js"
         const script = document.createElement('script');
         const clientKey: any = process.env.NEXT_PUBLIC_CLIENT
@@ -209,6 +214,7 @@ export default function SectionDonate() {
         script.setAttribute('data-client-key', clientKey)
         script.async = true
         document.body.appendChild(script)
+
         return () => {
             document.body.removeChild(script)
         }
